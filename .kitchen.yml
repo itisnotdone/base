@@ -4,8 +4,7 @@ driver:
 
 provisioner:
   name: chef_zero
-  install_script_url: >
-    http://def-www.default.don/site/chef-bootstrap/install_chef_script_for_lxd.sh
+  install_strategy: once
 
 transport:
   name: sftp
@@ -15,10 +14,10 @@ verifier:
   name: inspec
 
 platforms:
-  - name: lxc01
+  - name: lxc
     driver:
       provider: lxd
-      template: ubuntu-16.04-chef
+      alias: ubuntu-16.04-chef
 
 suites:
   - name: base

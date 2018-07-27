@@ -10,10 +10,10 @@ include_recipe 'chef-client::config'
 include_recipe 'apt::default'
 include_recipe 'base::user'
 
-rb_tr_file 'blahblah' do
-  source_file '/etc/apt/source.list'
-  as_is 'blahblah'
-  to_be 'blahblah'
+rb_tr_file '/etc/apt/sources.list' do
+  source_file '/etc/apt/sources.list'
+  search_regexp ' http.*/ubuntu/? '
+  string_to_be ' https://def-nexus.default.don/repository/ubuntu/ '
   action :translate
 end
 
